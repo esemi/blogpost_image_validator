@@ -30,13 +30,9 @@ def test_pil(filename):
 
 if __name__ == '__main__':
 
-    assert test_imghdr('test.jpg') == True
-    assert test_imghdr('unvalid.jpg') == False
-    assert test_imghdr('notfound.jpg') == False
-
-    assert test_pil('test.jpg') == True
-    assert test_pil('unvalid.jpg') == False
-    assert test_pil('notfound.jpg') == False
+    assert test_imghdr('test.jpg') and test_pil('test.jpg')
+    assert not test_imghdr('unvalid.jpg') and not test_pil('unvalid.jpg')
+    assert not test_imghdr('notfound.jpg') and not test_pil('notfound.jpg')
 
     print "test_imghdr %.2f" % timeit.timeit("test_imghdr('test.jpg')", setup="from __main__ import test_imghdr")
     print "test_pil %.2f" %  timeit.timeit("test_pil('test.jpg')", setup="from __main__ import test_pil")
